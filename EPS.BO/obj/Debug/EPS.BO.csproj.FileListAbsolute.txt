@@ -1,0 +1,7 @@
+C:\Personal\EPS\2017\newWeb\EPS.BO\bin\Debug\EPS.BO.dll
+C:\Personal\EPS\2017\newWeb\EPS.BO\bin\Debug\EPS.BO.pdb
+C:\Personal\EPS\2017\newWeb\EPS.BO\bin\Debug\Dapper.dll
+C:\Personal\EPS\2017\newWeb\EPS.BO\bin\Debug\Dapper.xml
+C:\Personal\EPS\2017\newWeb\EPS.BO\obj\Debug\EPS.BO.csprojResolveAssemblyReference.cache
+C:\Personal\EPS\2017\newWeb\EPS.BO\obj\Debug\EPS.BO.dll
+C:\Personal\EPS\2017\newWeb\EPS.BO\obj\Debug\EPS.BO.pdb
