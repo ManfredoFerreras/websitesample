@@ -1,0 +1,80 @@
+﻿@model AmazonTaxClaim.Models.ReclImpAmazon
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("Upload", "ReclImpAmazons", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+<h4>Reclamos devolución de impuestos - Amazon</h4>
+ <hr />
+
+<div class="form-horizontal">
+    <div class="form-group">
+        <p>1. Seleccione el archivo de transacciones de amazon:</p>
+        <div class="col-md-10">
+            <input type="file" name="file" id="file" accept=".csv" /><br><br>
+        </div>
+    </div>
+    <div class="form-group">
+        <p>2. Subir Archivo</p>
+        <div class="col-md-10">
+            <input type="submit" value="Subir Archivo" />
+        </div>
+    </div>
+</div>
+    }
+
+    @using (Html.BeginForm())
+    {
+
+        @Html.AntiForgeryToken()
+
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ARCHIVO, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ARCHIVO, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    <p>3. Seleccionar el período</p>
+                    @Html.DropDownListFor(model => model.PERIODO, (IEnumerable<SelectListItem>)ViewBag.PERIODO)
+                    @Html.ValidationMessageFor(model => model.PERIODO, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <p>4. Enviar información</p>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="submit" value="Enviar" class="btn btn-default glyphicon-save" />
+                </div>
+            </div>
+
+            @Html.HiddenFor(Model => Model.RUTA)
+            @Html.HiddenFor(Model => Model.CTE_NUMERO_EPS)
+  </div>
+            }
+
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }

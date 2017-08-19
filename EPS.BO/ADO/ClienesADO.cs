@@ -74,6 +74,13 @@ namespace EPS.BO.ADO
 			return oClientes;
 		}
 
+        public bool PasswordIsValid(Clientes user, string password)
+        {
+            //var hasher = new MyPasswordHasher();
+            //var hash = hasher.CreateHash(password);
+            return password.Equals(user.CTE_CODIGO_VOICE);
+        }
 
-	}
+
+    }
 }

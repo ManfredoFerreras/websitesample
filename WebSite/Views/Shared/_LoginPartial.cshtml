@@ -1,20 +1,13 @@
-﻿@if (Request.IsAuthenticated) {
-    <text >
-     
-    Hola, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
-    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+﻿<ul class="nav navbar-nav navbar-right">
+    @if (Request.IsAuthenticated)
     {
-        @Html.AntiForgeryToken()
-        <a href="javascript:document.getElementById('logoutForm').submit()"><span class="glyphicon glyphicon-log-out text-center">Cerrar sessión</span></a>
-    }
-    </text>
+        <li>@Html.ActionLink(User.Identity.Name.TrimEnd(), "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })</li>
+        <li><a href="Account/Login"><span class="glyphicon glyphicon-log-in"></span>Salir</a></li>
+
     }
     else
     {
-
-
-        <span class="glyphicon glyphicon-hand-right"> @Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" }) </span>
-        <span>|</span>
-        <span class="glyphicon glyphicon-log-in">@Html.ActionLink(" Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) </span>
-
+        <li><a href="Account/Register"><span class="glyphicon glyphicon-user"></span>Registrarse</a></li>
+        <li><a href="Account/Login"><span class="glyphicon glyphicon-log-in"></span>Login </a></li>
     }
+</ul>

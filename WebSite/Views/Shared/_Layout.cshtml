@@ -2,38 +2,64 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+    <title>Express Parcel Service (EPS)</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
 
     @Styles.Render("~/Content/css")
-
 
     @Scripts.Render("~/bundles/modernizr")
   
     
 </head>
 <body>
- 
-  @Html.Action("Navbar", "Navbar") 
+@if (Request.IsAuthenticated == false)
+{
+    Response.Redirect("Account/Login");
+}
 
-    <div class="container-fluid text-center">
-        <div class="row content">
-           <div class="col-sm-12 text-left">
-                <div id="body">
-                    @RenderSection("featured", required: false)
-                    <section>
-                        @RenderBody()
-                    </section>
-                </div>
+  <nav class="navbar navbar-default" >
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">EPS</a>
             </div>
-            <div class="col-sm-1 text-left">
-                <div>
-                
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Inicio</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        Paquetes
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Mis paquetes</a></li>
+                        <li><a href="#">Delivery</a></li>
+                        <li><a href="#">Localizar</a></li>
+                        <li><a href="#">Pickup</a></li>
+                        <li><a href="#">COD</a></li>
+                        <li><a href="#">Pre-Aviso</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Mis envíos</a></li>
+
+            </ul>
+            <form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Rastrear envíos">
                 </div>
-            </div>
-    
+                <button type="submit" class="btn btn-link btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+            </form>
+                <section id="login">
+                    @Html.Partial("_LoginPartial")
+                </section>
+      
         </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+        </footer>
     </div>
     
     <footer class="container-fluid text-center" style="background-color: #294262; border-color: blue;">

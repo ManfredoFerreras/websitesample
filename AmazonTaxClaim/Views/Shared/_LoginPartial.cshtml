@@ -1,0 +1,13 @@
+﻿<ul class="nav navbar-nav navbar-right">
+    @if (Request.IsAuthenticated)
+    {
+        <li>@Html.ActionLink(User.Identity.Name.TrimEnd(), "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })</li>
+        <li><a href="~/Account/Login"><span class="glyphicon glyphicon-log-in"></span>Salir</a></li>
+
+    }
+    else
+    {
+        <li><a href="Account/Register"><span class="glyphicon glyphicon-user"></span>Registrarse</a></li>
+        <li><a href="Account/Login"><span class="glyphicon glyphicon-log-in"></span>Login </a></li>
+    }
+</ul>
